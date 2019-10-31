@@ -48,9 +48,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   `big_enum_val`, `big_enum_rank`, `big_set`,
   `big_enumP`, `big_enum_cond`, `big_enum`
 
-- Arithmetic theorems in ssrnat and div:
+- Arithmetic theorems in ssrnat, div and prime:
   - some trivial results in ssrnat: `ltn_predL`, `ltn_predRL`,
     `ltn_subrR`, `leq_subrR`, `ltn_subrL` and `predn_sub`,
+  - some trivial results in ssrnat: `ltn_predl`, `ltn_predr`,
+    `ltn_subr` and `predn_sub`,
   - theorems about `n <=/< p +/- m` and `m +/- n <=/< p`:
     `leq_psubRL`, `ltn_psubLR`, `leq_subRL`, `ltn_subLR`, `leq_subCl`,
     `leq_psubCr`, `leq_subCr`, `ltn_subCr`, `ltn_psubCl` and
@@ -64,7 +66,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
        `divnBMl`, `divnBl` and `divnBr`,
      + specialization of the former theorems for .+1 and .-1:
        `edivnS`, `divnS`, `modnS`, `edivn_pred`, `divn_pred` and
-       `modn_pred`.
+       `modn_pred`,
+  - theorems about `logn`, `coprime`, `gcd`, `lcm` and `partn`:
+    `logn_coprime`, `logn_gcd`, `logn_lcm`, `eq_partn_from_log`
+    and `eqn_from_log`.
 
 - Added map/parametricity theorems about `path`, `sort` and `sorted`:
 
