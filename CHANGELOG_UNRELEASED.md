@@ -30,8 +30,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
     `contra_leq`, `contra_ltn`, `contra_leq_ltn`, `contra_ltn_leq`,
     `contraPleq`, `contraPltn`, `contra_not_leq`, `contra_not_ltn`, `contra_leq_not`, `contra_ltn_not`
 - in `ssralg.v`, new lemma `sumr_const_nat` and `iter_addr_0`
-- in `ssrnum.v`, new lemma `ler_sum_nat`
-
+- in `ssrnum.v`, new lemmas `ler_sum_nat`, `max_real`, `bigmax_real`
+`
 - in `seq.v`, new lemmas: `take_uniq`, `drop_uniq`
 - in `fintype.v`, new lemmas: `card_geqP`, `card_gt1P`, `card_gt2P`,
   `card_le1_eqP` (generalizes `fintype_le1P`),

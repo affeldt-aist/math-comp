@@ -3711,6 +3711,17 @@ Implicit Types x y z t : R.
 Lemma num_real x : x \is real. Proof. exact: num_real. Qed.
 Hint Resolve num_real : core.
 
+Lemma max_real x y : x \is real -> y \is real -> max x y \is real.
+Proof.
+by rewrite !realE => /orP[|] x0 /orP[|] y0;
+  rewrite le_maxr le_maxl x0 y0 !(orbT,orTb).
+Qed.
+
+Lemma bigmax_real (T : choiceType) x (D : seq T) (f : T -> R):
+  x \is real -> (forall t : T, t \in D -> f t \is real) ->
+  \big[max/x]_(t <- D) f t \is real.
+Proof. by move=> ?; elim/big_ind : _. Qed.
+
 Lemma lerP x y : ler_xor_gt x y (min y x) (min x y) (max y x) (max x y)
                                 `|x - y| `|y - x| (x <= y) (y < x).
 Proof. exact: real_leP. Qed.
