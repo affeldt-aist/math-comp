@@ -3712,10 +3712,10 @@ Lemma num_real x : x \is real. Proof. exact: num_real. Qed.
 Hint Resolve num_real : core.
 
 Lemma max_real x y : x \is real -> y \is real -> max x y \is real.
-Proof.
-by rewrite !realE => /orP[|] x0 /orP[|] y0;
-  rewrite le_maxr le_maxl x0 y0 !(orbT,orTb).
-Qed.
+Proof. by case: leP. Qed.
+
+Lemma min_real x y : x \is real -> y \is real -> min x y \is real.
+Proof. by case: leP. Qed.
 
 Lemma bigmax_real (T : choiceType) x (D : seq T) (f : T -> R):
   x \is real -> (forall t : T, t \in D -> f t \is real) ->
