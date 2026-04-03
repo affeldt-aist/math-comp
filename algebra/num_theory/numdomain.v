@@ -62,6 +62,23 @@ HB.mixin Record Zmodule_isSemiNormed (R : POrderZmodule.type) M
 HB.structure Definition SemiNormedZmodule (R : porderZmodType) :=
   { M of Zmodule_isSemiNormed R M & GRing.Zmodule M }.
 
+HB.mixin Record Zmodule_isSubSemiNormed (R : POrderZmodule.type)
+    (M : semiNormedZmodType R) (S : pred M) T & SubType M S T
+    & SemiNormedZmodule R T := {
+  norm : @norm _ M \o (val : T -> M) = @norm _ T
+}.
+
+#[short(type="subSemiNormedZmodType")]
+HB.structure Definition SubSemiNormedZmodule (R : porderZmodType)
+    (V : semiNormedZmodType R) (S : pred V) :=
+  { W of GRing.SubZmodule V S W & Zmodule_isSubSemiNormed R V S W}.
+
+Section subSemiNormed.
+Context (R : porderZmodType) (V : semiNormedZmodType R) (S : pred V) (U : subSemiNormedZmodType S).
+Notation val := (val : U -> V).
+
+End subSemiNormed.
+
 HB.mixin Record SemiNormedZmodule_isPositiveDefinite
     (R : POrderZmodule.type) M & @SemiNormedZmodule R M := {
   normr0_eq0 : forall x : M, norm x = 0 -> x = 0;
@@ -71,6 +88,11 @@ HB.mixin Record SemiNormedZmodule_isPositiveDefinite
 HB.structure Definition NormedZmodule (R : porderZmodType) :=
   { M of SemiNormedZmodule_isPositiveDefinite R M & SemiNormedZmodule R M }.
 Arguments norm {R M} x : rename.
+
+#[short(type="subNormedZmodType")]
+HB.structure Definition SubNormedZmodule (R : porderZmodType)
+    (V : normedZmodType R) (S : pred V) :=
+  { U of SubChoice V S U & NormedZmodule R U & @SubSemiNormedZmodule R V S U }.
 
 HB.factory Record Zmodule_isNormed (R : porderZmodType) M
          & GRing.Zmodule M := {
